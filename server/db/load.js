@@ -46,7 +46,7 @@ mongoose.connect(`mongodb://localhost/${process.env.DB_NAME}`)
   });
 
 /*
-commented out mongoose.connect from db.js and then ran node load.js from terminal and got the following response -
+commented out mongoose.connect from db.js and then ran node server/db/load.js from terminal and got the following response -
 Database connection established
 Connection to the database established successfully
 artists data saved

@@ -3,7 +3,7 @@ import React from 'react';
 const ArtistTile = ({artist, handleArtistClick}) => {
 
 const handleClick = () => {
-  handleArtistClick(artist.id);
+  handleArtistClick(artist.id, artist.name, artist.images[1].url);
 };
 
 return (

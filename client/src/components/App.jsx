@@ -9,6 +9,7 @@ const App = () => {
   const [artists, setArtists] = useState([]);
   const [homeOpen, setHomeOpen] = useState(true);
   const [tracks, setTracks] = useState([]);
+  const [currentArtist, setCurrentArtist] = useState({});
 
 useEffect(()=> {
   axios.get('/artists')
@@ -29,13 +30,14 @@ const handleHomeClick = () => {
   }
 }
 
-const handleArtistClick = (id) => {
-  console.log("test1", id);
+const handleArtistClick = (id, name, image) => {
+  console.log("test1", id, name, image);
   axios.get(`/tracks/${id}`)
   .then((response) => {
     console.log("tracks", response);
     setTracks(response.data[0].tracks);
     setHomeOpen(false);
+    setCurrentArtist({id: id, name: name, image: image});
 })
 .catch((err) => {
   console.log("error in fetching tracks data");
@@ -52,7 +54,7 @@ const handleArtistClick = (id) => {
     </div>
     <div className="center-panel">
         {homeOpen ? <ArtistList artists={artists} handleArtistClick={handleArtistClick}/> :
-        (tracks ? <TracksPage tracks={tracks}/> : null)}
+        (tracks ? <TracksPage tracks={tracks} currentArtist={currentArtist}/> : null)}
     </div>
   </div>
   )

@@ -29,9 +29,25 @@ let ArtistSchema = new Schema({
   });
 
 let TrackSchema = new Schema({
+    album: {
+      id: String,
+      images: [
+      {
+        height: { type: Number },
+        url: { type: String },
+        width: { type: Number }
+      }
+    ]},
     artists: [{
       id: String,
-      name: String
+      name: String,
+      images: [
+        {
+          height: { type: Number },
+          url: { type: String },
+          width: { type: Number }
+        }
+      ]
     }],
     href: String,
     id: String,

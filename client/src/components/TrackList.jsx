@@ -4,7 +4,7 @@ import TrackTile from './TrackTile.jsx';
 const TrackList = ({tracks}) => {
 
 return(
-<div>
+<div className="track-list">
 {tracks.map((item, index)=> {return <TrackTile track={item} key={index}/>})}
 </div>
 
