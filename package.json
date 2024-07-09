@@ -1,0 +1,41 @@
+{
+  "name": "rhythm",
+  "version": "1.0.0",
+  "description": "An app to create playlists",
+  "scripts": {
+    "test": "npm test",
+    "react-dev": "webpack --mode development --watch",
+    "server-dev": "npx nodemon --watch server server/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pallavi25Kishore/Rhythm.git"
+  },
+  "keywords": [
+    "Playlist",
+    "Music",
+    "Rhythm"
+  ],
+  "author": "Pallavi Kishore",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Pallavi25Kishore/Rhythm/issues"
+  },
+  "homepage": "https://github.com/Pallavi25Kishore/Rhythm#readme",
+  "devDependencies": {
+    "@babel/core": "^7.13.10",
+    "@babel/plugin-transform-runtime": "^7.13.10",
+    "@babel/preset-env": "^7.13.10",
+    "@babel/preset-react": "^7.12.13",
+    "babel-loader": "^8.2.2",
+    "nodemon": "^2.0.7",
+    "webpack": "^5.70.0",
+    "webpack-cli": "^4.5.0",
+    "axios": "^0.21.1",
+    "react": "^17.0.2",
+    "react-dom": "17.0.2",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.10.15"
+  }
+}
