@@ -3,6 +3,8 @@ import axios from 'axios';
 import ArtistList from './ArtistList.jsx';
 import Home from './Home.jsx';
 import TracksPage from './TracksPage.jsx';
+import Playlist from './Playlist.jsx';
+import PlaylistPage from './PlaylistPage.jsx';
 
 const App = () => {
 
@@ -10,6 +12,8 @@ const App = () => {
   const [homeOpen, setHomeOpen] = useState(true);
   const [tracks, setTracks] = useState([]);
   const [currentArtist, setCurrentArtist] = useState({});
+  const [playlist, setPlaylist] = useState([]);
+  const [playlistOpen, setPlaylistOpen] = useState(false);
 
 useEffect(()=> {
   axios.get('/artists')
@@ -23,11 +27,21 @@ useEffect(()=> {
 
 }, []);
 
+useEffect(()=> {
+  getPlaylist();
+}, []);
+
 
 const handleHomeClick = () => {
   if (!homeOpen) {
     setHomeOpen(true);
+    setPlaylistOpen(false);
   }
+};
+
+const handlePlaylistClick = () => {
+    setHomeOpen(false);
+    setPlaylistOpen(true);
 }
 
 const handleArtistClick = (id, name, image) => {
@@ -44,17 +58,42 @@ const handleArtistClick = (id, name, image) => {
 });
 };
 
+const getPlaylist = () => {
+  axios.get('/playlist')
+  .then((response) => {
+    console.log("playlist data", response.data);
+    setPlaylist(response.data);
+  })
+  .catch((err) => {
+    console.log("error in fetching playlist data");
+  });
+};
+
+
+const addToPlaylist = (track_id, track_name, track_image) => {
+    axios.post('/playlist', {track_id: track_id, track_name: track_name, track_image: track_image})
+    .then((response) => {
+      console.log(response);
+      getPlaylist();
+    })
+    .catch((err) => {
+      console.log("error in posting track to playlist");
+    });
+};
+
   return (
   <div className="outer-container">
     <div className="left-panel">
         <div className="left-upper-panel">
           <Home handleHomeClick={handleHomeClick} homeOpen={homeOpen}/>
         </div>
-        <div className="left-lower-panel"></div>
+        <div className="left-lower-panel">
+          {playlist ? <Playlist handlePlaylistClick={handlePlaylistClick}/> : null}
+        </div>
     </div>
     <div className="center-panel">
         {homeOpen ? <ArtistList artists={artists} handleArtistClick={handleArtistClick}/> :
-        (tracks ? <TracksPage tracks={tracks} currentArtist={currentArtist}/> : null)}
+        (playlistOpen ? <PlaylistPage playlist={playlist}/> : (tracks ? <TracksPage tracks={tracks} currentArtist={currentArtist} addToPlaylist={addToPlaylist}/> : null))}
     </div>
   </div>
   )

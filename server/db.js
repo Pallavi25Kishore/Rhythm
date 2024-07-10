@@ -63,10 +63,18 @@ let TrackSchema = new Schema({
     tracks: [TrackSchema]
   });
 
+  let PlaylistTrackSchema = new Schema({
+    track_id: String,
+    track_name: String,
+    track_image: String
+  });
+
 
   const Artist = mongoose.model('Artist', ArtistSchema);
   const TrackList = mongoose.model('TrackList', TrackListSchema);
+  const PlaylistTrack = mongoose.model('PlaylistTrack', PlaylistTrackSchema);
 
 module.exports.Artist = Artist;
 module.exports.TrackList = TrackList;
+module.exports.PlaylistTrack = PlaylistTrack;
 

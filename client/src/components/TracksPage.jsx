@@ -2,12 +2,12 @@ import React from 'react';
 import ArtistPanel from './ArtistPanel.jsx';
 import TrackList from './TrackList.jsx';
 
-const TracksPage = ({tracks, currentArtist}) => {
+const TracksPage = ({tracks, currentArtist, addToPlaylist}) => {
 
 return (
   <div className="tracks-page">
     <ArtistPanel currentArtist={currentArtist}/>
-    <TrackList tracks={tracks}/>
+    <TrackList tracks={tracks} addToPlaylist={addToPlaylist}/>
   </div>
 )
 };

@@ -101,7 +101,6 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  gap: 2%;
   align-items: center;
 }
 
@@ -117,12 +116,14 @@ body {
 }
 
 .track-tile {
+  position: relative;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  gap: 2%;
+  gap: 3%;
   flex-wrap:wrap;
   align-items: center;
+  margin-top: 0.5%;
 
 }
 
@@ -130,7 +131,7 @@ body {
   height: 50px;
   width: 50px;
   border-radius: 10%;
-  margin-left: 5%;
+  margin-left: 25%;
 }
 
 .artist-panel-image {
@@ -147,4 +148,32 @@ body {
   width: 50%;
   font-size: 5vw;
 }
+
+.track-tile:hover {
+  background-color: #1B2631 ;
+}
+
+.track-tile:hover .track-name,
+.track-tile:hover .track-image {
+  background-color: #1B2631;
+}
+
+.plus-sign {
+  position: absolute;
+  top: 40%;
+  left: 80%;
+}
+
+
+.playlist-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 10%;
+  margin-left: 20%;
+  width: 30%;
+  cursor: pointer;
+}
+
 

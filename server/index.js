@@ -30,6 +30,33 @@ app.get('/tracks/:id', (req, res) => {
   });
 });
 
+app.post('/playlist', (req, res) => {
+  let data = {
+    track_id: req.body.track_id,
+    track_name: req.body.track_name,
+    track_image: req.body.track_image
+  }
+  controllers.addPlaylistTrack(data)
+  .then((response) => {
+    res.status(200).send(response)
+  })
+  .catch((err) => {
+    console.log("error in saving playlist data");
+    res.send(400);
+  });
+});
+
+app.get('/playlist', (req, res) => {
+  controllers.getPlaylistTracks()
+  .then((response) => {
+    res.status(200).send(response);
+  })
+  .catch((err) => {
+    console.log("error in fetching playlist data");
+    res.send(400);
+  });
+});
+
 
 app.listen(process.env.PORT);
 console.log(`Listening at http://localhost:${process.env.PORT}`);
