@@ -21,14 +21,14 @@ body {
 .center-panel {
   width: 84.5%;
   height: 100vh;
-  background: linear-gradient(to bottom, #34495E 0%, #17202A  30%);
+  background: linear-gradient(to bottom, #3a3a3a 0%, #121212  30%);
   border-radius: 1%;
   overflow-y: auto;
 }
 
 .left-upper-panel, .left-lower-panel {
   width: 100%;
-  background-color: #17202A;
+  background-color: #121212;
   border-radius: 3%;
 }
 
@@ -77,11 +77,11 @@ body {
 .home-container {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-evenly;
   flex-wrap: wrap;
   margin-top: 10%;
   margin-left: 20%;
-  width: 30%;
+  width: 50%;
   cursor: pointer;
 }
 
@@ -91,7 +91,7 @@ body {
 
 .tracks-page {
   height: 100%;
-  background: linear-gradient(to bottom, #0B5345 0%, #17202A  60%);
+  background: linear-gradient(to bottom, #0B5345 0%, #121212  30%);
   display: flex;
   flex-direction: column;
 }
@@ -112,7 +112,7 @@ body {
   gap: 2%;
   margin-top: 5%;
   z-index: 1;
-  background: linear-gradient(to bottom, rgb(23, 32, 42, 0.3) 0%, rgb(23, 32, 42, 0.8)  20%);
+  background: linear-gradient(to bottom, rgb(23, 32, 42, 0.3) 0%, rgb(18, 18, 18, 0.8)  20%);
 }
 
 .track-tile {
@@ -176,11 +176,11 @@ body {
 .playlist-container {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-evenly;
   flex-wrap: wrap;
   margin-top: 10%;
   margin-left: 20%;
-  width: 30%;
+  width: 50%;
   cursor: pointer;
 }
 

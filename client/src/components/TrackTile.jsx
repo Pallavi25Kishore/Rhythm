@@ -35,13 +35,22 @@ return (
 
     {currentlyPlaying ? <div className="track-name" style={{color: '#5c9d1b'}}>{track.name}</div> : <div className="track-name">{track.name}</div>}
 
-    <div className="plus-sign" onClick={handlePlusClick}> { filteredArr.length > 0 ? <i className="fa-solid fa-circle-check" style={{color: '#5c9d1b'}}></i> : <i className="fa-solid fa-circle-plus" style={{color: '#ffffff'}}></i> }</div>
+    <div className="plus-sign" onClick={handlePlusClick}> { filteredArr.length > 0 ? <i className="fa-solid fa-circle-check fa-2xl" style={{color: '#5c9d1b'}}></i> : <i className="fa-solid fa-circle-plus fa-2xl" style={{color: '#ffffff'}}></i> }</div>
 
     <div className="audio-icon" onClick={handleAudioToggle}>
-        {currentlyPlaying ? <i className="fa-solid fa-circle-pause" style={{color: '#5c9d1b'}}></i> : <i className="fa-solid fa-circle-play" style={{color: '#5c9d1b'}}></i>}
+        {currentlyPlaying ? <i className="fa-solid fa-circle-pause fa-2xl" style={{color: '#5c9d1b'}}></i> : <i className="fa-solid fa-circle-play fa-2xl" style={{color: '#5c9d1b'}}></i>}
     </div>
 
     <audio ref={audioRef} src={track.preview_url}></audio>
+
+    <div className="bars">
+      <div className="bar"></div>
+      <div className="bar"></div>
+      <div className="bar"></div>
+      <div className="bar"></div>
+      <div className="bar"></div>
+      <div className="bar"></div>
+    </div>
 
   </div>
 )
