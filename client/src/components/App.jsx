@@ -14,6 +14,8 @@ const App = () => {
   const [currentArtist, setCurrentArtist] = useState({});
   const [playlist, setPlaylist] = useState([]);
   const [playlistOpen, setPlaylistOpen] = useState(false);
+  const [playlistNames, setPlaylistNames] = useState(['Playlist1', 'Playlist2', 'Playlist3']);
+  const [currentPlaylist, setCurrentPlaylist] = useState('');
 
 useEffect(()=> {
   axios.get('/artists')
@@ -39,9 +41,10 @@ const handleHomeClick = () => {
   }
 };
 
-const handlePlaylistClick = () => {
+const handlePlaylistClick = (text) => {
     setHomeOpen(false);
     setPlaylistOpen(true);
+    setCurrentPlaylist(text);
 }
 
 const handleArtistClick = (id, name, image) => {
@@ -70,8 +73,8 @@ const getPlaylist = () => {
 };
 
 
-const addToPlaylist = (track_id, track_name, track_image) => {
-    axios.post('/playlist', {track_id: track_id, track_name: track_name, track_image: track_image})
+const addToPlaylist = (track_id, track_name, track_image, track_playlist) => {
+    axios.post('/playlist', {track_id: track_id, track_name: track_name, track_image: track_image, track_playlist : track_playlist})
     .then((response) => {
       console.log(response);
       getPlaylist();
@@ -99,12 +102,17 @@ const deleteFromPlaylist = (id) => {
           <Home handleHomeClick={handleHomeClick} homeOpen={homeOpen}/>
         </div>
         <div className="left-lower-panel">
-          {playlist ? <Playlist handlePlaylistClick={handlePlaylistClick}/> : null}
+          {playlist ? <Playlist handlePlaylistClick={handlePlaylistClick} playlistNames={playlistNames}/> : null}
         </div>
     </div>
     <div className="center-panel">
-        {homeOpen ? <ArtistList artists={artists} handleArtistClick={handleArtistClick}/> :
-        (playlistOpen ? <PlaylistPage playlist={playlist}/> : (tracks ? <TracksPage tracks={tracks} currentArtist={currentArtist} addToPlaylist={addToPlaylist} playlist={playlist} deleteFromPlaylist={deleteFromPlaylist}/> : null))}
+        {homeOpen ?
+          <ArtistList artists={artists} handleArtistClick={handleArtistClick}/> :
+             (playlistOpen ?
+                <PlaylistPage playlist={playlist} currentPlaylist={currentPlaylist}/> :
+                     (tracks ?
+                          <TracksPage tracks={tracks} currentArtist={currentArtist} addToPlaylist={addToPlaylist} playlist={playlist} deleteFromPlaylist={deleteFromPlaylist} playlistNames = {playlistNames}/> :
+                               null))}
     </div>
   </div>
   )

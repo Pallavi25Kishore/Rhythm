@@ -66,7 +66,8 @@ let TrackSchema = new Schema({
   let PlaylistTrackSchema = new Schema({
     track_id: String,
     track_name: String,
-    track_image: String
+    track_image: String,
+    track_playlist: String
   });
 
 

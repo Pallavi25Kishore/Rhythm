@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
 
-const TrackTile = ({track, addToPlaylist, playlist, deleteFromPlaylist}) => {
+const TrackTile = ({track, addToPlaylist, playlist, deleteFromPlaylist, playlistNames}) => {
 
   const [currentlyPlaying, setCurrentlyPlaying] = useState(false);
+  const [openPlaylistNamesList, setOpenPlaylistNamesList] = useState(false);
   const audioRef = React.createRef();
 
   var filteredArr = playlist.filter((item) => {
@@ -13,10 +14,16 @@ const TrackTile = ({track, addToPlaylist, playlist, deleteFromPlaylist}) => {
 
   const handlePlusClick = () => {
     if (filteredArr.length === 0 ) {
-      addToPlaylist(track.id, track.name, track.album.images[2].url);
+       setOpenPlaylistNamesList(true);
+
     } else {
       deleteFromPlaylist(track.id);
     }
+  };
+
+  const handleNameClick =(name) => {
+    addToPlaylist(track.id, track.name, track.album.images[2].url, name);
+    setOpenPlaylistNamesList(false);
   };
 
  const handleAudioToggle = () => {
@@ -29,13 +36,23 @@ const TrackTile = ({track, addToPlaylist, playlist, deleteFromPlaylist}) => {
     }
  };
 
+ const handleOutsideClick = () => {
+  if (openPlaylistNamesList) {
+    setOpenPlaylistNamesList(false);
+  }
+ };
+
 return (
-  <div className="track-tile" >
+  <div className="track-tile" onClick={handleOutsideClick}>
     <div><img src={track.album.images[2].url} className="track-image"></img></div>
 
     {currentlyPlaying ? <div className="track-name" style={{color: '#5c9d1b'}}>{track.name}</div> : <div className="track-name">{track.name}</div>}
 
-    <div className="plus-sign" onClick={handlePlusClick}> { filteredArr.length > 0 ? <i className="fa-solid fa-circle-check fa-2xl" style={{color: '#5c9d1b'}}></i> : <i className="fa-solid fa-circle-plus fa-2xl" style={{color: '#ffffff'}}></i> }</div>
+    <div className="plus-sign" onClick={handlePlusClick}> { filteredArr.length > 0 ? <i className="fa-solid fa-circle-check fa-2xl" style={{color: '#5c9d1b'}}></i> : <i className="fa-solid fa-circle-plus fa-2xl" style={{color: '#ffffff', cursor: 'pointer'}}></i> }</div>
+
+    {openPlaylistNamesList ? <div className="playlist-options-list">
+        {playlistNames.map((item, index) => { return <div className="playlist-options-list-tile" onClick={() => {handleNameClick(item)}} key={index}>{item}</div>})}
+    </div> : null}
 
     <div className="audio-icon" onClick={handleAudioToggle}>
         {currentlyPlaying ? <i className="fa-solid fa-circle-pause fa-2xl" style={{color: '#5c9d1b'}}></i> : <i className="fa-solid fa-circle-play fa-2xl" style={{color: '#5c9d1b'}}></i>}
