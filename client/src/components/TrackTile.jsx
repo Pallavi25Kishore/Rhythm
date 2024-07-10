@@ -22,7 +22,7 @@ const TrackTile = ({track, addToPlaylist, playlist, deleteFromPlaylist, playlist
   };
 
   const handleNameClick =(name) => {
-    addToPlaylist(track.id, track.name, track.album.images[2].url, name);
+    addToPlaylist(track.id, track.name, track.album.images[2].url, name, track.preview_url);
     setOpenPlaylistNamesList(false);
   };
 

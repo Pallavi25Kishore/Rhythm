@@ -35,7 +35,8 @@ app.post('/playlist', (req, res) => {
     track_id: req.body.track_id,
     track_name: req.body.track_name,
     track_image: req.body.track_image,
-    track_playlist: req.body.track_playlist
+    track_playlist: req.body.track_playlist,
+    track_preview_url: req.body.track_preview_url
   }
   controllers.addPlaylistTrack(data)
   .then((response) => {

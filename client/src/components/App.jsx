@@ -73,8 +73,8 @@ const getPlaylist = () => {
 };
 
 
-const addToPlaylist = (track_id, track_name, track_image, track_playlist) => {
-    axios.post('/playlist', {track_id: track_id, track_name: track_name, track_image: track_image, track_playlist : track_playlist})
+const addToPlaylist = (track_id, track_name, track_image, track_playlist, track_preview_url) => {
+    axios.post('/playlist', {track_id: track_id, track_name: track_name, track_image: track_image, track_playlist : track_playlist, track_preview_url: track_preview_url})
     .then((response) => {
       console.log(response);
       getPlaylist();
@@ -109,7 +109,7 @@ const deleteFromPlaylist = (id) => {
         {homeOpen ?
           <ArtistList artists={artists} handleArtistClick={handleArtistClick}/> :
              (playlistOpen ?
-                <PlaylistPage playlist={playlist} currentPlaylist={currentPlaylist}/> :
+                <PlaylistPage playlist={playlist} currentPlaylist={currentPlaylist} deleteFromPlaylist={deleteFromPlaylist}/> :
                      (tracks ?
                           <TracksPage tracks={tracks} currentArtist={currentArtist} addToPlaylist={addToPlaylist} playlist={playlist} deleteFromPlaylist={deleteFromPlaylist} playlistNames = {playlistNames}/> :
                                null))}

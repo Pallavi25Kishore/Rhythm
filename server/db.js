@@ -67,7 +67,8 @@ let TrackSchema = new Schema({
     track_id: String,
     track_name: String,
     track_image: String,
-    track_playlist: String
+    track_playlist: String,
+    track_preview_url: String
   });
 
 
