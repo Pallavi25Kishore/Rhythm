@@ -17,3 +17,7 @@ module.exports.addPlaylistTrack = (data) => {
 module.exports.getPlaylistTracks = () => {
   return PlaylistTrack.find({}).exec();
 };
+
+module.exports.deletePlaylistTrack = (id) => {
+  return PlaylistTrack.findOneAndDelete({track_id: id});
+};

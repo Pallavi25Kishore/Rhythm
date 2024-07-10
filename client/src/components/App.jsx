@@ -81,6 +81,17 @@ const addToPlaylist = (track_id, track_name, track_image) => {
     });
 };
 
+const deleteFromPlaylist = (id) => {
+  axios.delete(`/playlist/${id}`)
+  .then((response) => {
+    console.log(response);
+    getPlaylist();
+  })
+  .catch((err) => {
+    console.log("error in deleting track to playlist");
+  });
+};
+
   return (
   <div className="outer-container">
     <div className="left-panel">
@@ -93,7 +104,7 @@ const addToPlaylist = (track_id, track_name, track_image) => {
     </div>
     <div className="center-panel">
         {homeOpen ? <ArtistList artists={artists} handleArtistClick={handleArtistClick}/> :
-        (playlistOpen ? <PlaylistPage playlist={playlist}/> : (tracks ? <TracksPage tracks={tracks} currentArtist={currentArtist} addToPlaylist={addToPlaylist}/> : null))}
+        (playlistOpen ? <PlaylistPage playlist={playlist}/> : (tracks ? <TracksPage tracks={tracks} currentArtist={currentArtist} addToPlaylist={addToPlaylist} playlist={playlist} deleteFromPlaylist={deleteFromPlaylist}/> : null))}
     </div>
   </div>
   )

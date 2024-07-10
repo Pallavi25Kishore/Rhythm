@@ -57,6 +57,17 @@ app.get('/playlist', (req, res) => {
   });
 });
 
+app.delete('/playlist/:id', (req, res) => {
+  controllers.deletePlaylistTrack(req.params.id)
+  .then((response) => {
+    res.status(200).send(response);
+  })
+  .catch((err) => {
+    console.log("error in deleting playlist data");
+    res.send(400);
+  });
+});
+
 
 app.listen(process.env.PORT);
 console.log(`Listening at http://localhost:${process.env.PORT}`);
