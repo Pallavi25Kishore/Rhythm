@@ -43,14 +43,14 @@ return (
 
     <audio ref={audioRef} src={track.preview_url}></audio>
 
-    <div className="bars">
+    { currentlyPlaying? <div className="bars">
       <div className="bar"></div>
       <div className="bar"></div>
       <div className="bar"></div>
       <div className="bar"></div>
       <div className="bar"></div>
       <div className="bar"></div>
-    </div>
+    </div> : null }
 
   </div>
 )
