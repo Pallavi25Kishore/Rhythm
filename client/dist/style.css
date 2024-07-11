@@ -21,9 +21,18 @@ body {
 .center-panel {
   width: 84.5%;
   height: 100vh;
-  background: linear-gradient(to bottom, #3a3a3a 0%, #121212  30%);
+  background: linear-gradient(to bottom, #3a3a3a 0%, #121212  40%);
   border-radius: 1%;
   overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.home-centerpanel-head {
+  width: 100%;
+  height: 15%;
+  display: flex;
+  justify-content: space-between;
 }
 
 .left-upper-panel, .left-lower-panel {
@@ -341,6 +350,12 @@ body {
   padding: 5px;
   background-color: #1B2631;
   border-radius: 5px;
-  width: 30%;
+  width: 50%;
   text-align: center;
+}
+
+.center-head-artists {
+  font-weight: bold;
+  font-size: 4vw;
+  margin-left: 2%;
 }

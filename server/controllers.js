@@ -36,6 +36,6 @@ module.exports.addPlaylistName = (data) => {
  };
 
  module.exports.deletePlaylistTrackforDeletedPlaylist = (name) => {
-  return PlaylistTrack.findOneAndDelete({track_playlist: name});
+  return PlaylistTrack.deleteMany({track_playlist: name});
 };
 

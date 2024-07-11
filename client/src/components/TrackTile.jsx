@@ -54,9 +54,11 @@ return (
         {playlistNames.map((item, index) => { return <div className="playlist-options-list-tile" onClick={() => {handleNameClick(item.playlist_name)}} key={index}>{item.playlist_name}</div>})}
     </div> : null}
 
+    {track.preview_url !== null ?
     <div className="audio-icon" onClick={handleAudioToggle}>
         {currentlyPlaying ? <i className="fa-solid fa-circle-pause fa-2xl" style={{color: '#5c9d1b'}}></i> : <i className="fa-solid fa-circle-play fa-2xl" style={{color: '#5c9d1b'}}></i>}
-    </div>
+    </div> :
+    <div className="audio-icon"><i className="fa-solid fa-circle-play fa-2xl" style={{color: 'rgba(86, 101, 115, 0.4)'}}></i></div>}
 
     <audio ref={audioRef} src={track.preview_url}></audio>
 

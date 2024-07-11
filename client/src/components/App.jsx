@@ -156,7 +156,7 @@ const deleteFromPlaylistNames = (name) => {
         {homeOpen ?
           <ArtistList artists={artists} handleArtistClick={handleArtistClick}/> :
              (playlistOpen ?
-                <PlaylistPage playlist={playlist} currentPlaylist={currentPlaylist} deleteFromPlaylist={deleteFromPlaylist}/> :
+                <PlaylistPage playlist={playlist} currentPlaylist={currentPlaylist} deleteFromPlaylist={deleteFromPlaylist} playlistNames={playlistNames} handleHomeClick={handleHomeClick}/> :
                      (tracks ?
                           <TracksPage tracks={tracks} currentArtist={currentArtist} addToPlaylist={addToPlaylist} playlist={playlist} deleteFromPlaylist={deleteFromPlaylist} playlistNames = {playlistNames}/> :
                                null))}

@@ -5,3 +5,4 @@ client/dist/bundle.js.map
 config.js
 .DS_Store
 package-lock.json
+server/db
