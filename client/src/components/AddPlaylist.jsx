@@ -21,7 +21,7 @@ const AddPlaylist = ({playlistNames, addToPlaylistNames}) => {
 
 return (
 <div className="add-playlist-container">
-   <div className="add-playlist" onClick={handleAddPlaylist}>Playlist + </div>
+   <div className="add-playlist" onClick={handleAddPlaylist}>+ New Playlist</div>
 </div>
 
 )
