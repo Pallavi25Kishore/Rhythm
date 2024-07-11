@@ -5,7 +5,7 @@ const Playlist = ({handlePlaylistClick, playlistNames, deleteFromPlaylistNames})
   return (
     <div className="playlist-name-rows">
       {playlistNames.map((item, index) => {return (
-      <div className="playlist-row">
+      <div className="playlist-row" key={index}>
           <div className="playlist-container" key={index} >
             <div className="playlist-icon"><i className="fa-solid fa-music"></i></div>
             <div className="playlist-name" onClick={() => {handlePlaylistClick(item.playlist_name)}}>{item.playlist_name}</div>

@@ -28,9 +28,12 @@ return (
 
     <div className="plus-sign" onClick={handleDeleteClick}><i className="fa-solid fa-circle-minus fa-2xl" style={{color: '#ffffff'}}></i> </div>
 
+    {track.track_preview_url !== null ?
     <div className="audio-icon" onClick={handleAudioToggle}>
         {currentlyPlaying ? <i className="fa-solid fa-circle-pause fa-2xl" style={{color: '#5c9d1b'}}></i> : <i className="fa-solid fa-circle-play fa-2xl" style={{color: '#5c9d1b'}}></i>}
-    </div>
+    </div> :
+    <div className="audio-icon"><i className="fa-solid fa-circle-play fa-2xl" style={{color: 'rgba(86, 101, 115, 0.4)'}}></i></div>}
+
 
     <audio ref={audioRef} src={track.track_preview_url}></audio>
 
