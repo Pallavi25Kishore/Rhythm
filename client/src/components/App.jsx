@@ -5,6 +5,7 @@ import Home from './Home.jsx';
 import TracksPage from './TracksPage.jsx';
 import Playlist from './Playlist.jsx';
 import PlaylistPage from './PlaylistPage.jsx';
+import AddPlaylist from './AddPlaylist.jsx';
 
 const App = () => {
 
@@ -14,7 +15,7 @@ const App = () => {
   const [currentArtist, setCurrentArtist] = useState({});
   const [playlist, setPlaylist] = useState([]);
   const [playlistOpen, setPlaylistOpen] = useState(false);
-  const [playlistNames, setPlaylistNames] = useState(['Playlist1', 'Playlist2', 'Playlist3']);
+  const [playlistNames, setPlaylistNames] = useState([]);
   const [currentPlaylist, setCurrentPlaylist] = useState('');
 
 useEffect(()=> {
@@ -33,6 +34,9 @@ useEffect(()=> {
   getPlaylist();
 }, []);
 
+useEffect(()=> {
+  getPlaylistNames();
+}, []);
 
 const handleHomeClick = () => {
   if (!homeOpen) {
@@ -95,6 +99,48 @@ const deleteFromPlaylist = (id) => {
   });
 };
 
+
+const getPlaylistNames = () => {
+  axios.get('/playlist/name')
+  .then((response) => {
+    console.log("playlist names", response.data);
+    setPlaylistNames(response.data);
+  })
+  .catch((err) => {
+    console.log("error in fetching playlist names");
+  });
+};
+
+
+const addToPlaylistNames = (name) => {
+    axios.post('/playlist/name', {playlist_name: name})
+    .then((response) => {
+      console.log(response);
+      getPlaylistNames();
+    })
+    .catch((err) => {
+      console.log("error in posting playlist name");
+    });
+};
+
+const deleteFromPlaylistNames = (name) => {
+  axios.delete(`/playlist/name/${name}`)
+  .then((response) => {
+    console.log(response);
+    return axios.get('/playlist/name')
+  })
+  .then((response) => {
+    setPlaylistNames(response.data);
+    return axios.delete(`/playlist/tracks/${name}`)
+  })
+  .then(() => {
+    getPlaylist();
+  })
+  .catch((err) => {
+    console.log("error in deleting playlist name");
+  });
+};
+
   return (
   <div className="outer-container">
     <div className="left-panel">
@@ -102,7 +148,8 @@ const deleteFromPlaylist = (id) => {
           <Home handleHomeClick={handleHomeClick} homeOpen={homeOpen}/>
         </div>
         <div className="left-lower-panel">
-          {playlist ? <Playlist handlePlaylistClick={handlePlaylistClick} playlistNames={playlistNames}/> : null}
+          <AddPlaylist playlistNames={playlistNames} addToPlaylistNames={addToPlaylistNames}/>
+          {playlistNames.length > 0 ? <Playlist handlePlaylistClick={handlePlaylistClick} playlistNames={playlistNames} deleteFromPlaylistNames={deleteFromPlaylistNames}/> : null}
         </div>
     </div>
     <div className="center-panel">

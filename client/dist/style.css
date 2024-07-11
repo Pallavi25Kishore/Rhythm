@@ -104,6 +104,39 @@ body {
   align-items: center;
 }
 
+.artist-panel-image {
+  margin-left: 5%;
+  border-radius: 100%;
+  margin-top: 20%;
+  height: 95%;
+  width: 95%;
+}
+
+.artist-panel-name {
+  margin-top: 18%;
+  margin-left: 1%;
+  height: 40%;
+  width: 80%;
+  font-size: 5vw;
+  font-weight: bolder;
+}
+
+.playlist-panel {
+  height: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.playlist-panel-name {
+  margin-bottom: 2%;
+  margin-left: 1%;
+  height: 40%;
+  width: 90%;
+  font-size: 5vw;
+  font-weight: bolder;
+}
+
 .track-list {
   height: 70%;
   display: flex;
@@ -134,22 +167,6 @@ body {
   margin-left: 25%;
 }
 
-.artist-panel-image {
-  margin-left: 5%;
-  border-radius: 100%;
-  margin-top: 20%;
-  height: 95%;
-  width: 95%;
-}
-
-.artist-panel-name {
-  margin-top: 18%;
-  margin-left: 1%;
-  height: 40%;
-  width: 80%;
-  font-size: 5vw;
-  font-weight: bolder;
-}
 
 .track-tile:hover {
   background-color: #1B2631 ;
@@ -172,19 +189,60 @@ body {
   left: 80%;
 }
 
+.playlist-name-rows {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.playlist-row {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.playlist-row:hover {
+  background-color: #1B2631;
+}
+
+.playlist-row:hover .playlist-container {
+  background-color: #1B2631;
+}
 
 .playlist-container {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
-  margin-top: 10%;
-  margin-left: 20%;
-  width: 50%;
+  justify-content: flex-start;
+  margin-top: 5%;
+  margin-left: 5%;
+  margin-bottom: 5%;
+  width: 70%;
+  gap: 8%;
 }
 
 .playlist-name {
   cursor: pointer;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.playlist-name:hover {
+  cursor: pointer;
+  color: rgb(255, 255, 255);
+}
+
+.fa-music {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.fa-trash {
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.fa-trash:hover {
+  cursor: pointer;
+  color: rgb(255, 255, 255);
 }
 
 .bars {
@@ -268,4 +326,21 @@ body {
 
 .playlist-options-list-tile:hover {
   background-color: #0B5345;
+}
+
+.add-playlist-container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.add-playlist {
+  cursor: pointer;
+  margin-right: 10px;
+  margin-top: 10px;
+  padding: 5px;
+  background-color: #1B2631;
+  border-radius: 5px;
+  width: 30%;
+  text-align: center;
 }

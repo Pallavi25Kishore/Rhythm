@@ -3,8 +3,8 @@ import React from 'react';
 const PlaylistPanel = ({currentPlaylist}) => {
 
 return (
-  <div className="artist-panel">
-    <div className="artist-panel-name">{currentPlaylist}</div>
+  <div className="playlist-panel">
+    <div className="playlist-panel-name">{currentPlaylist}</div>
   </div>
 )
 

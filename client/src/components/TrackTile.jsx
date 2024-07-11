@@ -51,7 +51,7 @@ return (
     <div className="plus-sign" onClick={handlePlusClick}> { filteredArr.length > 0 ? <i className="fa-solid fa-circle-check fa-2xl" style={{color: '#5c9d1b'}}></i> : <i className="fa-solid fa-circle-plus fa-2xl" style={{color: '#ffffff', cursor: 'pointer'}}></i> }</div>
 
     {openPlaylistNamesList ? <div className="playlist-options-list">
-        {playlistNames.map((item, index) => { return <div className="playlist-options-list-tile" onClick={() => {handleNameClick(item)}} key={index}>{item}</div>})}
+        {playlistNames.map((item, index) => { return <div className="playlist-options-list-tile" onClick={() => {handleNameClick(item.playlist_name)}} key={index}>{item.playlist_name}</div>})}
     </div> : null}
 
     <div className="audio-icon" onClick={handleAudioToggle}>

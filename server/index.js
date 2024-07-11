@@ -70,6 +70,53 @@ app.delete('/playlist/:id', (req, res) => {
   });
 });
 
+app.post('/playlist/name', (req, res) => {
+  let data = {
+    playlist_name: req.body.playlist_name
+  }
+  controllers.addPlaylistName(data)
+  .then((response) => {
+    res.status(200).send(response)
+  })
+  .catch((err) => {
+    console.log("error in saving playlist name");
+    res.send(400);
+  });
+});
+
+app.get('/playlist/name', (req, res) => {
+  controllers.getPlaylistNames()
+  .then((response) => {
+    res.status(200).send(response);
+  })
+  .catch((err) => {
+    console.log("error in fetching playlist names");
+    res.send(400);
+  });
+});
+
+app.delete('/playlist/name/:name', (req, res) => {
+  controllers.deletePlaylistName(req.params.name)
+  .then((response) => {
+    res.status(200).send(response);
+  })
+  .catch((err) => {
+    console.log("error in deleting playlist name");
+    res.send(400);
+  });
+});
+
+app.delete('/playlist/tracks/:name', (req, res) => {
+  controllers.deletePlaylistTrackforDeletedPlaylist(req.params.name)
+  .then((response) => {
+    res.status(200).send(response);
+  })
+  .catch((err) => {
+    console.log("error in deleting playlist tracks for deleted playlist");
+    res.send(400);
+  });
+});
+
 
 app.listen(process.env.PORT);
 console.log(`Listening at http://localhost:${process.env.PORT}`);
