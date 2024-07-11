@@ -17,6 +17,7 @@ const App = () => {
   const [playlistOpen, setPlaylistOpen] = useState(false);
   const [playlistNames, setPlaylistNames] = useState([]);
   const [currentPlaylist, setCurrentPlaylist] = useState('');
+  const [openSearchBar, setOpenSearchBar] = useState(false);
 
 useEffect(()=> {
   axios.get('/artists')
@@ -52,10 +53,8 @@ const handlePlaylistClick = (text) => {
 }
 
 const handleArtistClick = (id, name, image) => {
-  console.log("test1", id, name, image);
   axios.get(`/tracks/${id}`)
   .then((response) => {
-    console.log("tracks", response);
     setTracks(response.data[0].tracks);
     setHomeOpen(false);
     setCurrentArtist({id: id, name: name, image: image});
@@ -68,7 +67,6 @@ const handleArtistClick = (id, name, image) => {
 const getPlaylist = () => {
   axios.get('/playlist')
   .then((response) => {
-    console.log("playlist data", response.data);
     setPlaylist(response.data);
   })
   .catch((err) => {
@@ -80,7 +78,6 @@ const getPlaylist = () => {
 const addToPlaylist = (track_id, track_name, track_image, track_playlist, track_preview_url) => {
     axios.post('/playlist', {track_id: track_id, track_name: track_name, track_image: track_image, track_playlist : track_playlist, track_preview_url: track_preview_url})
     .then((response) => {
-      console.log(response);
       getPlaylist();
     })
     .catch((err) => {
@@ -91,7 +88,6 @@ const addToPlaylist = (track_id, track_name, track_image, track_playlist, track_
 const deleteFromPlaylist = (id) => {
   axios.delete(`/playlist/${id}`)
   .then((response) => {
-    console.log(response);
     getPlaylist();
   })
   .catch((err) => {
@@ -103,7 +99,6 @@ const deleteFromPlaylist = (id) => {
 const getPlaylistNames = () => {
   axios.get('/playlist/name')
   .then((response) => {
-    console.log("playlist names", response.data);
     setPlaylistNames(response.data);
   })
   .catch((err) => {
@@ -115,7 +110,6 @@ const getPlaylistNames = () => {
 const addToPlaylistNames = (name) => {
     axios.post('/playlist/name', {playlist_name: name})
     .then((response) => {
-      console.log(response);
       getPlaylistNames();
     })
     .catch((err) => {
@@ -126,7 +120,6 @@ const addToPlaylistNames = (name) => {
 const deleteFromPlaylistNames = (name) => {
   axios.delete(`/playlist/name/${name}`)
   .then((response) => {
-    console.log(response);
     return axios.get('/playlist/name')
   })
   .then((response) => {
@@ -141,11 +134,19 @@ const deleteFromPlaylistNames = (name) => {
   });
 };
 
+const handleSideSearchClick = () => {
+     setOpenSearchBar(true);
+}
+
+const handleBackClick = () => {
+  setOpenSearchBar(false);
+}
+
   return (
   <div className="outer-container">
     <div className="left-panel">
         <div className="left-upper-panel">
-          <Home handleHomeClick={handleHomeClick} homeOpen={homeOpen}/>
+          <Home handleHomeClick={handleHomeClick} homeOpen={homeOpen} handleSideSearchClick={handleSideSearchClick}/>
         </div>
         <div className="left-lower-panel">
           <AddPlaylist playlistNames={playlistNames} addToPlaylistNames={addToPlaylistNames}/>
@@ -154,7 +155,7 @@ const deleteFromPlaylistNames = (name) => {
     </div>
     <div className="center-panel">
         {homeOpen ?
-          <ArtistList artists={artists} handleArtistClick={handleArtistClick}/> :
+          <ArtistList artists={artists} handleArtistClick={handleArtistClick} openSearchBar={openSearchBar} handleBackClick={handleBackClick}/> :
              (playlistOpen ?
                 <PlaylistPage playlist={playlist} currentPlaylist={currentPlaylist} deleteFromPlaylist={deleteFromPlaylist} playlistNames={playlistNames} handleHomeClick={handleHomeClick}/> :
                      (tracks ?

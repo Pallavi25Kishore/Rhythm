@@ -30,9 +30,48 @@ body {
 
 .home-centerpanel-head {
   width: 100%;
-  height: 10%;
+  height: 100px;
   display: flex;
   justify-content: space-between;
+  position: relative;
+}
+
+.search-setup {
+  margin-left: 2%;
+  width: 60%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 30px;
+}
+
+.form-input {
+  height: 50px;
+  width: 400px;
+  border-radius: 50px;
+  border: solid white 0.5px;
+  background-color: rgb(18, 18, 18, 0.8);
+  border: solid white 1px;
+}
+
+.form-input:hover {
+  background-color: rgb(23, 32, 42, 0.2);
+}
+
+input[type="text"] {
+  color: white;
+  padding-left: 15px;
+  background-color: rgb(23, 32, 42, 0.2);
+  border: solid white 1px;
+}
+
+.search-back-button {
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.search-back-button:hover {
+  color: rgba(255, 255, 255);
 }
 
 .left-upper-panel, .left-lower-panel {
@@ -59,9 +98,10 @@ body {
   width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   flex-wrap: wrap;
   gap: 15px;
+  padding-left: 60px;
 }
 
 .artist-tile:hover {
@@ -84,6 +124,12 @@ body {
   position: relative;
 }
 
+.home-and-search {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
 .home-container {
   display: flex;
   flex-direction: row;
@@ -97,6 +143,32 @@ body {
 
 .home1, .home2 {
   font-size: 100%;
+}
+
+.side-search-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  margin-top: 10%;
+  margin-left: 20%;
+  width: 50%;
+  cursor: pointer;
+}
+
+.side-search-icon {
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.side-search {
+  font-size: 100%;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.side-search:hover {
+  color: rgba(255, 255, 255);
 }
 
 .tracks-page {
@@ -376,5 +448,21 @@ body {
   animation: hop 0.4s 1;
 }
 
+.social-media-icons {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  display: flex;
+  justify-content: space-evenly;
+  width: 150px;
+}
 
+.fb, .insta, .twitter {
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.fb:hover, .insta:hover, .twitter:hover {
+  color: rgba(255, 255, 255);
+}
 
