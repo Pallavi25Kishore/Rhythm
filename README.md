@@ -45,7 +45,7 @@ npm install
 ### Installation
 1. Clone the repo.
 sh
-  git clone https://github.com/thenauticalnine/rfp2404-blueocean.git
+  git clone https://github.com/Pallavi25Kishore/Rhythm.git
 
 2. Install NPM packages.
 sh
