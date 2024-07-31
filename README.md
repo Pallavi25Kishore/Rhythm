@@ -42,4 +42,27 @@ Welcome to Rhythm, a single-page, user-friendly music playlist management app al
 ```sh
 npm install
 
+### Installation
+1. Clone the repo.
+sh
+  git clone https://github.com/thenauticalnine/rfp2404-blueocean.git
+
+2. Install NPM packages.
+sh
+  npm install
+
+3. Make a copy of the .exampleenv file and rename it to .env. Enter the following in the .env file.
+sh
+PORT = PORT
+DB_HOST = "host name"
+DB_USER = "username"
+DB_NAME = "name of database"
+DB_PASSWORD = "password"
+DB_PORT = DB PORT
+
+4. Run in dev environment.
+sh
+  npm run server-dev
+  npm run react-dev
+
 
