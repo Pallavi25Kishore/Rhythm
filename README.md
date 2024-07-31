@@ -41,28 +41,33 @@ Welcome to Rhythm, a single-page, user-friendly music playlist management app al
 ![NPM](https://img.shields.io/badge/NPM-%23000000.svg?style=for-the-badge&logo=npm&logoColor=white)
 ```sh
 npm install
+```
 
 ### Installation
 1. Clone the repo.
-sh
+```sh
   git clone https://github.com/Pallavi25Kishore/Rhythm.git
+```
 
 2. Install NPM packages.
-sh
+```sh
   npm install
+```
 
 3. Make a copy of the .exampleenv file and rename it to .env. Enter the following in the .env file.
-sh
+```sh
 PORT = PORT
 DB_HOST = "host name"
 DB_USER = "username"
 DB_NAME = "name of database"
 DB_PASSWORD = "password"
 DB_PORT = DB PORT
+```
 
 4. Run in dev environment.
-sh
+```sh
   npm run server-dev
   npm run react-dev
+```
 
 
