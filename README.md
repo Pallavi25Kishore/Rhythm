@@ -1,16 +1,16 @@
-# Rhythm
+# :musical_note:Rhythm 
 
-## About
+## :books:About
 Welcome to Rhythm, a single-page, user-friendly music playlist management app allowing users to discover artists, listen to top tracks, manage playlists, and enjoy a dynamic visual music experience. This application uses a streamlined design to enhance user interaction and provides features like track management, artist search, and visual music bar animations.
 
-## Demo
+## :video_camera:Demo
 <div align="center">
   <a href="https://youtu.be/009kZ9izUjc">
     <img src="https://img.youtube.com/vi/009kZ9izUjc/0.jpg" alt="Watch the demo video" width="800px"/>
   </a>
 </div>
 
-## Technologies
+## :rocket:Technologies
 ### Front-End
 ![React](https://img.shields.io/badge/react-black?style=for-the-badge&logo=react)
 ![HTML5](https://img.shields.io/badge/html5-black?style=for-the-badge&logo=html5)
@@ -25,7 +25,7 @@ Welcome to Rhythm, a single-page, user-friendly music playlist management app al
 ### Tools
 ![Lighthouse](https://img.shields.io/badge/lighthouse-black?style=for-the-badge&logo=lighthouse)
 
-## Roadmap
+## :star2:Roadmap
  - [X] Set up the React framework.
  - [X] Implement MongoDB database schemas and establish connections.
  - [X] Create landing page to engage users and introduce app features.
@@ -36,7 +36,7 @@ Welcome to Rhythm, a single-page, user-friendly music playlist management app al
  - [X] Add visual music bar animation during playback.
  - [X] Optimize app for performance with Lighthouse achieving FCP of 1.3s and TBT of 0ms.
 
-## Getting Started
+## :sparkles:Getting Started
 ### Prerequisites
 ![NPM](https://img.shields.io/badge/NPM-%23000000.svg?style=for-the-badge&logo=npm&logoColor=white)
 ```sh
